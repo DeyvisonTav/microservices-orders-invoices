@@ -8,6 +8,7 @@ import {
 import { channels } from "../broker/channels/index.ts";
 import { schema } from "../db/schema/index.ts";
 import { client } from "../db/client.ts";
+import { dispatchOrderCreated } from "../broker/messages/order-created.ts";
 
  
 const app = fastify().withTypeProvider<ZodTypeProvider>();
@@ -39,10 +40,16 @@ app.post("/orders", {
   }
     
   await client.insert(schema.orders).values(order);
-  
-   channels.orders.sendToQueue("orders", Buffer.from(JSON.stringify(order)));
 
-  return reply.status(201).send()
+  dispatchOrderCreated({
+    orderId: order.id,
+    amount: order.amount,
+    customer: {
+      id: order.customerId,
+    },
+  });
+  
+  return reply.status(201).send(order);
 })
 
 
