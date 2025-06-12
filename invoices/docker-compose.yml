@@ -6,5 +6,5 @@ services:
       POSTGRES_PASSWORD: docker
       POSTGRES_DB: invoices
     ports:
-      - 5433:5433
+      - 5433:5432
  

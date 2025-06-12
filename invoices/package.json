@@ -13,6 +13,7 @@
   "description": "",
   "dependencies": {
     "@fastify/cors": "^11.0.1",
+    "@types/pg": "^8.15.4",
     "drizzle-orm": "^0.44.2",
     "fastify": "^5.3.3",
     "fastify-type-provider-zod": "^4.0.2",
