@@ -23,6 +23,9 @@
     "zod": "^3.25.55"
   },
   "devDependencies": {
+    "@opentelemetry/auto-instrumentations-node": "^0.60.1",
+    "@opentelemetry/sdk-node": "^0.202.0",
+    "@opentelemetry/sdk-trace-node": "^2.0.1",
     "@tsconfig/node22": "^22.0.2",
     "@types/node": "^22.15.30",
     "drizzle-kit": "^0.31.1",
