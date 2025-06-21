@@ -7,7 +7,6 @@ import {
   serializerCompiler,
   validatorCompiler,
  type  ZodTypeProvider } from "fastify-type-provider-zod";
-import { channels } from "../broker/channels/index.ts";
 import { schema } from "../db/schema/index.ts";
 import { client } from "../db/client.ts";
 import { dispatchOrderCreated } from "../broker/messages/order-created.ts";
