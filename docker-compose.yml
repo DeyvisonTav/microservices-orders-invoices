@@ -15,6 +15,19 @@ services:
       - 14268:14268 # jaeger-collector traces http
       - 4317:4317 # jaeger-collector traces otlp/grpc
       - 4318:4318 # jaeger-collector traces otlp/http
+
+  api-gateway:
+    image: kong:3.9
+    environment:
+      - KONG_DATABASE=off
+      - KONG_ADMIN_LISTEN=0.0.0.0:8001
+      - KONG_ADMIN_GUI_URL=http://localhost:8002
+    ports:
+      - 8000:8000 # proxy (API Gateway)
+      - 8001:8001 # API Gateway (admin)
+      - 8002:8002 # UI (admin)
+      - 8443:8443 # proxy SSL (API Gateway)
+      - 8444:8444 # API SSL (admin) 
   
 
 volumes:
